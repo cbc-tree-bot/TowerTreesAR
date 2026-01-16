@@ -40,7 +40,7 @@ Spotted Gum
 
 It has a Trunk that is 120mm wide"
                 align="center" color="white" visible="true"
-                scale="3.5 3.5 3.5" position="0 -2.5 0" billboard>
+                scale="20 20 20" position="0 -2.5 0" billboard>
             </a-text>
 
             <a-text value="Tree4.html" align="center" color="blue"
@@ -69,7 +69,7 @@ Spotted Gum
 
 It has a Trunk that is 120mm wide"
                 align="center" color="white" visible="true"
-                scale="3.5 3.5 3.5" position="0 -2.5 0" billboard>
+                scale="20 20 20" position="0 -2.5 0" billboard>
             </a-text>
 
             <a-text value="Tree5.html" align="center" color="blue"
@@ -86,12 +86,7 @@ It has a Trunk that is 120mm wide"
         </a-gltf-model>
 
         <!-- Camera -->
-        <a-camera
-            look-controls-enabled="false"
-            arjs-look-controls="smoothingFactor: 0.1"
-            gps-camera
-            rotation-reader>
-        </a-camera>
+    <a-camera look-controls-enabled="false" arjs-look-controls="smoothingFactor: 0.1" gps-camera="minDistance: 1; maxDistance: 2000; positionMinAccuracy: 20;" rotation-reader> </a-camera>
 
     </a-scene>
 
