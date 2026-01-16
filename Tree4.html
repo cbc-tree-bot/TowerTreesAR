@@ -27,10 +27,20 @@
         arjs="sourceType: webcam; debugUIEnabled: false;"
     >
 
+        <!-- GPS Debug HUD -->
+        <a-entity id="gpsDebug" position="0 2 -3">
+            <a-text id="gpsText"
+                    value="Waiting for GPS..."
+                    color="yellow"
+                    align="center"
+                    width="4">
+            </a-text>
+        </a-entity>
+
         <!-- Tree 4 -->
         <a-gltf-model
             id="Tree4"
-            src="./media/MainSphereTreeBlue.glb"
+            src="./media/MainSphereTreeFluro.glb"
             scale="0.5 0.5 0.5"
             gps-entity-place="latitude: -33.9149819; longitude: 151.0366839;"
         >
@@ -40,7 +50,7 @@ Spotted Gum
 
 It has a Trunk that is 120mm wide"
                 align="center" color="white" visible="true"
-                scale="20 20 20" position="0 -2.5 0" billboard>
+                scale="3.5 3.5 3.5" position="0 -2.5 0" billboard>
             </a-text>
 
             <a-text value="Tree4.html" align="center" color="blue"
@@ -59,7 +69,7 @@ It has a Trunk that is 120mm wide"
         <!-- Tree 5 -->
         <a-gltf-model
             id="Tree5"
-            src="./media/MainSphereTreeTorq.glb"
+            src="./media/MainSphereTreeFluro.glb"
             scale="0.5 0.5 0.5"
             gps-entity-place="latitude: -33.91511468; longitude: 151.0366889;"
         >
@@ -69,7 +79,7 @@ Spotted Gum
 
 It has a Trunk that is 120mm wide"
                 align="center" color="white" visible="true"
-                scale="20 20 20" position="0 -2.5 0" billboard>
+                scale="3.5 3.5 3.5" position="0 -2.5 0" billboard>
             </a-text>
 
             <a-text value="Tree5.html" align="center" color="blue"
@@ -86,13 +96,56 @@ It has a Trunk that is 120mm wide"
         </a-gltf-model>
 
         <!-- Camera -->
-    <a-camera look-controls-enabled="false" arjs-look-controls="smoothingFactor: 0.1" gps-camera="minDistance: 1; maxDistance: 2000; positionMinAccuracy: 20;" rotation-reader> </a-camera>
+        <a-camera
+            look-controls-enabled="false"
+            arjs-look-controls="smoothingFactor: 0.1"
+            gps-camera="minDistance: 1; maxDistance: 2000; positionMinAccuracy: 20;"
+            rotation-reader>
+        </a-camera>
 
     </a-scene>
 
     <script>
         document.querySelector("#Back").addEventListener("click", function () {
             window.history.back();
+        });
+
+        // GPS Debug Overlay Logic
+        document.addEventListener("gps-camera-update-position", e => {
+            const lat = e.detail.position.latitude;
+            const lon = e.detail.position.longitude;
+            const acc = e.detail.position.accuracy;
+
+            // Tree coordinates
+            const tree4 = { lat: -33.9149819, lon: 151.0366839 };
+            const tree5 = { lat: -33.91511468, lon: 151.0366889 };
+
+            function distanceTo(lat1, lon1, lat2, lon2) {
+                const R = 6371000; // meters
+                const dLat = (lat2 - lat1) * Math.PI / 180;
+                const dLon = (lon2 - lon1) * Math.PI / 180;
+                const a =
+                    Math.sin(dLat/2) * Math.sin(dLat/2) +
+                    Math.cos(lat1 * Math.PI/180) *
+                    Math.cos(lat2 * Math.PI/180) *
+                    Math.sin(dLon/2) * Math.sin(dLon/2);
+
+                return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+            }
+
+            const dist4 = distanceTo(lat, lon, tree4.lat, tree4.lon).toFixed(1);
+            const dist5 = distanceTo(lat, lon, tree5.lat, tree5.lon).toFixed(1);
+
+            const debugText = `
+Lat: ${lat.toFixed(6)}
+Lon: ${lon.toFixed(6)}
+Accuracy: ${acc}m
+
+Tree4: ${dist4}m away
+Tree5: ${dist5}m away
+            `;
+
+            document.querySelector("#gpsText").setAttribute("value", debugText);
         });
     </script>
 
