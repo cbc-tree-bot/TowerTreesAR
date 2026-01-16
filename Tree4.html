@@ -35,7 +35,6 @@
 	    id="Tree4"
 		src="src: url(./media/MainSphereTreeFluro.glb)"
             scale="0.5 0.5 0.5"
-			   animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
               gps-entity-place="latitude: -33.9149819; longitude: 151.0366839;">
 
 	       <a-text id="treetext1" value="This is a \nSpotted Gum\n(Corymbia maculata) \n\nIt has a Trunk that is 120mm wide" align="center" color="white" visible="true" scale="3.5 3.5 3.5" position="0 -2.5 0" billboard></a-text>
@@ -48,7 +47,6 @@
 	    id="Tree5"
 		src="src: url(./media/MainSphereTreeFluro.glb)"
             scale="0.5 0.5 0.5"
-			   animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
               gps-entity-place="latitude: -33.91511468; longitude: 151.0366889;">
 
 	       <a-text id="treetext1" value="This is a \nSpotted Gum\n(Corymbia maculata) \n\nIt has a Trunk that is 120mm wide" align="center" color="white" visible="true" scale="3.5 3.5 3.5" position="0 -2.5 0" billboard></a-text>
@@ -59,7 +57,8 @@
 
                 <!--<a-camera look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' rotation-reader></a-camera> -->
 			<!--<a-camera look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.05' positionMinAccuracy ="10" gps-camera="maxDistance: 70"></a-camera> -->
-				<a-camera look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.05' gps-camera rotation-reader> </a-camera>	
+		<a-camera look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera="simulateLatitude: -33.91492937747821; simulateLongitude: 151.03658555010574;" rotation-reader>	</a-camera>	
+		<!--<a-camera look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.05' gps-camera rotation-reader> </a-camera>	-->
 </a-scene>
 <script type="text/javascript">
      document.querySelector("#Back").addEventListener("click", function() {
