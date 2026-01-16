@@ -1,0 +1,156 @@
+  
+<!DOCTYPE html>
+<html>
+<head>
+  <title>leaflet-map-simple</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+
+  <!-- Load Leaflet code library: see http://leafletjs.com/download.html -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+  
+  <!-- Load Esri Leaflet from CDN -->
+  <script src="https://unpkg.com/esri-leaflet@3.0.2/dist/esri-leaflet.js"
+    integrity="sha512-myckXhaJsP7Q7MZva03Tfme/MSF5a6HC2xryjAM4FxPLHGqlh5VALCbywHnzs2uPoF/4G/QVXyYDDSkp5nPfig=="
+    crossorigin=""></script>
+
+  <!-- CSS -->
+  <style>
+  body { margin:0; padding:0; }
+  #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+  #map-title { position: relative; margin-top: 10px; margin-left: 50px; float: left; background: white; border: 2px solid rgba(0,0,0,0.2); padding: 6px 8px; font-family: Helvetica; font-weight: bold; font-size: 24px; z-index: 800; }
+  </style>
+</head>
+<body>
+
+
+  <div id="map-title">Bankstown City Gardens Tree AR Tour</div>
+  <div id="map"></div>
+
+  <!-- Create the interactive map content with JavaScript -->
+  <script>
+
+  /* Set up the initial map center and zoom level */
+  var map = L.map('map', {
+    center: [-33.92213356,151.0331755], // EDIT coordinates to re-center map
+    zoom: 19,  // EDIT from 1 (zoomed out) to 18 (zoomed in)
+    scrollWheelZoom: true,
+    tap: false
+  });
+
+  /* display basemap tiles -- see others at https://leaflet-extras.github.io/leaflet-providers/preview/ */
+  L.esri.tiledMapLayer({
+    url: 'http://maps.six.nsw.gov.au/arcgis/rest/services/public/NSW_Imagery/MapServer',
+    maxZoom: 23,
+      attribution: '&copy; <a href="https://osm.org/copyright">\
+        OpenStreetMap</a> contributors, &copy;\
+        <a href="https://carto.com/attribution">CARTO</a>'
+  }).addTo(map);
+    
+    var greenIcon = new L.Icon({
+  iconUrl: './media/marker-icon-2x-green.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+    
+        var violetIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+    
+    
+            var yellowIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x- yellow.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+    
+ 
+            var orangeIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+    
+            var redIcon = new L.Icon({
+  iconUrl: './media/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+  /* Display a point marker with pop-up text */
+  L.marker([-33.92213356,151.0331755],{icon: greenIcon}).addTo(map) // EDIT marker coordinates
+  .bindPopup('<a href="./Tree1.html">Tree 1</a>'); // EDIT pop-up text message
+  
+  L.marker([-33.92230473,151.0332314], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree2.html">Tree 2</a>');
+  
+  L.marker([-33.92228677,151.0331093], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree3.html">Tree 3</a>');  
+  
+  L.marker([-33.92228042,151.0330417], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree4.html">Tree 4</a>');  
+  
+  L.marker([-33.92228839,151.0330001], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree5.html">Tree 5</a>');  
+  
+  L.marker([-33.92216224,151.0330788], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree6.html">Tree 6</a>');  
+  
+  L.marker([-33.92236827,151.0333219], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree7.html">Tree 7</a>');  
+  
+  L.marker([-33.92219937,151.033044], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree8.html">Tree 8</a>');  
+  
+  L.marker([-33.92228323,151.03336], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree9.html">Tree 9</a>');  
+  
+  L.marker([-33.92237019,151.0332191], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree10.html">Tree 10</a>');  
+  
+  L.marker([-33.92230793,151.0329949], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree11.html">Tree 11</a>');  
+  
+  L.marker([-33.92210701,151.0330612], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree12.html">Tree 12</a>');  
+  
+  L.marker([-33.92221324,151.0332945], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree13.html">Tree 13</a>');  
+  
+  L.marker([-33.92227821,151.0332914], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree14.html">Tree 14</a>');  
+  
+  L.marker([-33.92238669,151.033345], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree15.html">Tree 15</a>');  
+  
+  L.marker([-33.92236111,151.0331293], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree16.html">Tree 16</a>');  
+  
+  L.marker([-33.92222906,151.0331337], {icon: greenIcon}).addTo(map)
+  .bindPopup('<a href="./Tree17.html">Tree 17</a>');  
+
+    L.marker([-33.922294032896694,151.0331577904548],{icon: redIcon}).addTo(map) // EDIT marker coordinates
+  .bindPopup('You are Viewing \nthe Trees\n from Here!'); // EDIT pop-up text message
+    
+    
+  </script>
+</body>
+</html>
