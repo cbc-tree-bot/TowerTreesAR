@@ -1,0 +1,62 @@
+<!-- Tree5.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Tree 1</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src='https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js'></script>
+	<script src="https://rawgit.com/blairmacintyre/aframe-look-at-billboard-component/master/dist/aframe-look-at-billboard-component.min.js"></script>
+	   
+</head>
+	
+<body style='margin: 10; overflow: hidden;'>
+	    <div
+      style="position: fixed; top:80%; width:100%; text-align: center; z-index: 1;"
+    >
+		    <img src="./media/back button.png" width="80" height="80" 
+      <button id="Back">
+        	      
+      </button>
+    </div>
+	
+    <a-scene
+        cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;'
+        raycaster="objects: [clickhandler];"
+        vr-mode-ui="enabled: false"
+		embedded
+		arjs='sourceType: webcam; debugUIEnabled: false;'>
+		
+	    
+	    
+	    
+	    <a-gltf-model 
+	    id="Tree5.html"
+		src="src: url(./media/MainSphereTreeFluro.glb)"
+            scale="0.5 0.5 0.5"
+			   animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+              gps-entity-place="latitude: -33.91511468; longitude: 151.0366889;">
+
+	       <a-text id="treetext1" value="This is a \nSpotted Gum\n(Corymbia maculata) \n\nIt has a Trunk that is 120mm wide" align="center" color="white" visible="true" scale="3.5 3.5 3.5" position="0 -2.5 0" billboard></a-text>
+		    <a-text id="treetext2" value="Tree5.html" align="center" color="blue" visible="true" scale="2 2 2" position="0 1.5 1" billboard></a-text>
+		    <a-text id="treetext3" value="7m Tall" align="center" color="red" visible="true" scale="2 2 2" position="3 2.5 1.5" billboard></a-text>
+		    <a-text id="treetext4" value="2m Wide" align="center" color="yellow" visible="true" scale="2 2 2" position="0 4.8 3.5" billboard></a-text>
+       </a-gltf-model>
+
+        <a-camera look-controls-enabled='false' arjs-look-controls='smoothingFactor: 0.1' gps-camera="simulateLatitude: -33.922294032896694; simulateLongitude: 151.0331577904548;" rotation-reader>
+		
+	</a-camera>
+</a-scene>
+<script type="text/javascript">
+     document.querySelector("#Back").addEventListener("click", function() {
+       window.history.back();
+      });
+	
+	
+      
+    </script>
+  </body>
+	
+</body>
+</html>
